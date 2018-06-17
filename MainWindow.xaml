@@ -4,9 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Counterpoint"
+        xmlns:local1="clr-namespace:Counterpoint.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local1:OpenFileDialogViewModel/>
+    </Window.DataContext>
     <Grid>
+        <TextBox Text="{Binding SelectedPath}" Margin="201,10,131,372" />
+        <Button Command = "{Binding OpenCommand}" Margin="20,10,613,372">Open file</Button>
         
+
     </Grid>
 </Window>
