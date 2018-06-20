@@ -3,17 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Counterpoint"
-        xmlns:local1="clr-namespace:Counterpoint.ViewModels"
+        xmlns:VM="clr-namespace:Counterpoint.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.DataContext>
-        <local1:OpenFileDialogViewModel/>
-    </Window.DataContext>
-    <Grid>
-        <TextBox Text="{Binding SelectedPath}" Margin="201,10,131,372" />
-        <Button Command = "{Binding OpenCommand}" Margin="20,10,613,372">Open file</Button>
-        
+    <Window.Resources>
+        <VM:MainViewModel x:Key="MainViewModel" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource MainViewModel}">
+        <TextBox Text="{Binding SelectedPath }" Margin="201,10,131,372" />
+        <Button Command = "{Binding ChooseFileCommand}" Margin="20,10,613,372">Choose file</Button>
+        <Button Command = "{Binding OpenFileCommand}" Margin="666,10,38,372">Open file</Button>
+        <TextBox Text="Select counterpoint specie: " Margin="201,47,370,335" FontSize="16" Background="#FFC1A8A8" />
+        <ComboBox ItemsSource="{Binding CounterpointSpecies,  Mode=TwoWay}" 
+                  SelectedItem="{Binding SelectedCounterpointSpecie,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Width="234" 
+                  Margin="427,47,0,0" 
+                  Height="26" />
 
     </Grid>
 </Window>
