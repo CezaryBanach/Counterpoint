@@ -178,6 +178,7 @@ namespace Counterpoint.Models
                     int noteIndex = Scale.IndexOf(intervalFromFirstNote % 12);
                     if(!IsConsonance(interval))
                     {
+                        //Druga czesc koniunkcji to sprawdzenie czy i to przejsciowy dzwiek w skali
                         if ((IsConsonance(intervals[i - 1]) && IsConsonance(intervals[i + 1]))
                           && (Math.Abs(voiceLine.NotesUngrouped[i - 1].NoteNumber - firstNote.NoteNumber) % 12
                             == Scale[(noteIndex - 1)>0? (noteIndex - 1) % 7: 0]
@@ -191,7 +192,31 @@ namespace Counterpoint.Models
 
                         }
                       else
-                        {
+                        {   //Cambiata
+                            if(specie == CounterpointSpecie.Third || specie == CounterpointSpecie.Fifth)
+                            {
+
+                                if (i - 1 > 0 && i + 2 < intervals.Count)
+                                {
+                                    if (cantusFirmus.VoiceId>voiceLine.VoiceId)
+                                    {                                    
+                                     if (intervals[i - 1]%12 == 12 && (intervals[i] == 11 || intervals[i] == 10)
+                                        && intervals[i + 1] == 7 && (intervals[i + 2] == 8|| intervals[i + 2] == 9))
+                                      {
+
+                                      }
+                                    }
+                                    else
+                                    {
+                                        if (intervals[i - 1] == 12 && (intervals[i] == 11 || intervals[i] == 10)
+                                         && intervals[i + 1] == 7 && (intervals[i + 2] == 12 || intervals[i + 2] == 11))
+                                        {
+
+                                        }
+
+                                    }
+                                }
+                             }
                             CounterpointCommentsLog.Add("Improperly resolved disonance at note " + (i+1).ToString() + ".");
                         }
                
@@ -207,7 +232,8 @@ namespace Counterpoint.Models
         private bool IsConsonance(int intervalInSemitones)
         {
             var interval = intervalInSemitones % 12;
-            if (interval == 1 ||
+            if (
+                interval == 1 ||
                 interval == 2 ||
                 interval == 5 ||
                 interval == 6 ||
