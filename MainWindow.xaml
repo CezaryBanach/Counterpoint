@@ -16,11 +16,49 @@
         <TextBox Text="Select counterpoint specie: " Margin="201,47,370,335" FontSize="16" Background="#FFC1A8A8" />
         <ComboBox ItemsSource="{Binding CounterpointSpecies,  Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedCounterpointSpecie,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedIndex ="2"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Top"
                   Width="234" 
                   Margin="427,47,0,0" 
                   Height="26" />
+        <ListBox ItemsSource="{Binding CounterpointComments, Mode=TwoWay}"
+                HorizontalAlignment="Left"
+                 Height="259" 
+                 VerticalAlignment="Top"
+                 Width="772"
+                 Margin="10,150,0,0"/>
+        <TextBox Text="Select tonic and mode: " Margin="201,82,370,305" FontSize="16" Background="#FFC1A8A8" />
+
+        <ComboBox ItemsSource="{Binding Modes, Mode=TwoWay}" 
+            SelectedItem="{Binding SelectedMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedIndex ="3"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="117" 
+            Margin="544,78,0,0" 
+            Height="32" />
+        <ComboBox ItemsSource="{Binding Tonics, Mode=TwoWay}" 
+            SelectedItem="{Binding SelectedTonic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedIndex ="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="117" 
+            Margin="427,78,0,0" 
+            Height="32" />
+        <TextBox Text="Select which voice is Cantus Firmus:"
+                 TextAlignment="Center"
+                 Margin="201,118,248,269"
+                 FontSize="16" 
+                 Background="#FFC1A8A8" />
+        <ComboBox ItemsSource="{Binding VoiceIds, Mode=TwoWay}" 
+            SelectedItem="{Binding SelectedVoiceId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedIndex ="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="117" 
+            Margin="544,118,0,0" 
+            Height="32" />
 
     </Grid>
 </Window>

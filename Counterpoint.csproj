@@ -63,7 +63,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Bar.cs" />
     <Compile Include="Models\CounterpointAnalysis.cs" />
+    <Compile Include="Models\CounterpointSpecie.cs" />
+    <Compile Include="Models\CounterpointSpecieExtensions.cs" />
+    <Compile Include="Models\Mode.cs" />
+    <Compile Include="Models\NamedInterval.cs" />
+    <Compile Include="Models\Piece.cs" />
+    <Compile Include="Models\Tonic.cs" />
+    <Compile Include="Models\VoiceLine.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="PropertySupport.cs" />
     <Compile Include="RelayCommand.cs" />
